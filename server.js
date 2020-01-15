@@ -1,20 +1,20 @@
+//Dependencies
 var express = require('express');
+// Create Express server through Node
 var app = express();
-var bodyParser = require('body-parser');
+
+// Initial PORT will be used in listeners/callback
 var PORT = process.env.PORT || 8080;
 
-var jsonParser = bodyParser.json()
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
-app.use(bodyParser.json({ type: 'applicaiton/*+json' }))
-app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }))
-app.use(bodyParser.text({ type: 'text/html' }))
-
+// Data parsing through Express app used here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-require("./app/routing/html-routes.js")(app);
+// Routes
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
+// Listeners
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
 });
