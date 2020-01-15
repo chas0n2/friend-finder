@@ -249,10 +249,7 @@
             $("#q10").val()
           ]
         };
-        let currentURL = window.location.origin;
-                // $.get(currentURL + '/api/friends', (data) => {
-                //     res.json(data);
-                // });
+        var currentURL = window.location.origin;
                 $.post(currentURL + '/api/friends', userData, (data) => {
                     console.log("POST data.name " + data.name);
                     $('#match-name').text(data.name);
